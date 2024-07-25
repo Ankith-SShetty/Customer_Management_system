@@ -23,7 +23,7 @@ public class JwtFilter implements Filter {
 
         // Check if the Authorization header is present and starts with "Bearer "
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            // Extract the token
+          
             String token = authHeader.substring(7);
 
             try {
