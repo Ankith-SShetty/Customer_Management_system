@@ -11,7 +11,7 @@ public class JwtFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        // Any filter initialization logic can go here
+       
     }
 
     @Override
