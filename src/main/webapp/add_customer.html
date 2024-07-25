@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Customer</title>
+</head>
+<body>
+<h2>Add New Customer</h2>
+<form id="addCustomerForm">
+  <input type="text" name="first_name" placeholder="First Name" required>
+  <input type="text" name="last_name" placeholder="Last Name" required>
+  <input type="text" name="street" placeholder="Street" required>
+  <input type="text" name="address" placeholder="Address" required>
+  <input type="text" name="city" placeholder="City" required>
+  <input type="text" name="state" placeholder="State" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="text" name="phone" placeholder="Phone" required>
+  <button type="submit">Add Customer</button>
+</form>
+<div id="message"></div>
+
+<script>
+  document.getElementById('addCustomerForm').onsubmit = async function (event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    await fetch('/api/customers', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+    document.getElementById('message').innerText = "Customer added successfully!";
+  }
+</script>
+</body>
+</html>
