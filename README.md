@@ -21,3 +21,7 @@ Customer List page
 
 ![Screenshot (225)](https://github.com/user-attachments/assets/cc8e2083-b698-4d5b-869a-8ff5a8f9521e)
 
+
+Add Customer
+
+![Screenshot (227)](https://github.com/user-attachments/assets/e372e484-50ee-4120-94dd-d3f381e70a20)
