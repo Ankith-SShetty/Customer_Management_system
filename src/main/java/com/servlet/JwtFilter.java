@@ -21,28 +21,22 @@ public class JwtFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authHeader = httpRequest.getHeader("Authorization");
 
-        // Check if the Authorization header is present and starts with "Bearer "
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
           
             String token = authHeader.substring(7);
 
             try {
-                // Validate the token
-                if (JwtUtil.validateToken(token)) {  // Assuming you have a method that validates the token
-                    // Token is valid; continue to the next filter or servlet
+                if (JwtUtil.validateToken(token)) { 
                     chain.doFilter(request, response);
                     return;
                 }
             } catch (Exception e) {
-                // Handle token validation exception (if needed)
                 System.err.println("Token validation failed: " + e.getMessage());
             }
         }
-
-        // If we reach here, authentication failed; respond with 401 Unauthorized
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        httpResponse.getWriter().write("{\"error\":\"Unauthorized access\"}"); // Send JSON error response
+        httpResponse.getWriter().write("{\"error\":\"Unauthorized access\"}");
     }
 
     @Override
